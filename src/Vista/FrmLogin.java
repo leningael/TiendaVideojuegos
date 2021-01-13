@@ -53,7 +53,6 @@ public class FrmLogin extends javax.swing.JFrame {
 
         btnIr.setBorderPainted(false);
         btnIr.setContentAreaFilled(false);
-        btnIr.setOpaque(false);
         btnIr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIrActionPerformed(evt);
@@ -62,7 +61,7 @@ public class FrmLogin extends javax.swing.JFrame {
         getContentPane().add(btnIr);
         btnIr.setBounds(150, 320, 150, 40);
 
-        lbFondo.setIcon(new javax.swing.ImageIcon("D:\\lenin\\Documents\\NetBeansProjects\\TiendaVideojuegos\\src\\Vista\\Login.png")); // NOI18N
+        lbFondo.setIcon(new javax.swing.ImageIcon("D:\\lenin\\Documents\\NetBeansProjects\\TiendaVideojuegos\\src\\Vista\\img\\Login.png")); // NOI18N
         getContentPane().add(lbFondo);
         lbFondo.setBounds(0, 0, 450, 430);
 
@@ -76,6 +75,7 @@ public class FrmLogin extends javax.swing.JFrame {
     private void btnIrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIrActionPerformed
         // TODO add your handling code here:
         new FrmInicio().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnIrActionPerformed
 
     /**

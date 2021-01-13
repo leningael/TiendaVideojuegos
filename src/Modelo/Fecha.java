@@ -46,7 +46,7 @@ public class Fecha {
 
     @Override
     public String toString() {
-        return "Dia: " + getDia() + ", mes: " + getMes() + ", anio: " + getAnio();
+        return getDia() + "-" + getMes() + "-" + getAnio();
     }
     
 }

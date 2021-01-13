@@ -7,7 +7,7 @@ package Vista;
 
 /**
  *
- * @author yoyit
+ * @author lenin
  */
 public class FrmVendedores extends javax.swing.JFrame {
 
@@ -30,22 +30,15 @@ public class FrmVendedores extends javax.swing.JFrame {
         lbFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(451, 425));
         setPreferredSize(new java.awt.Dimension(451, 425));
         setResizable(false);
         setSize(new java.awt.Dimension(451, 425));
+        getContentPane().setLayout(null);
 
-        lbFondo.setIcon(new javax.swing.ImageIcon("C:\\Users\\yoyit\\Downloads\\FrmVendedores.png")); // NOI18N
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbFondo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbFondo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        lbFondo.setIcon(new javax.swing.ImageIcon("D:\\lenin\\Documents\\NetBeansProjects\\TiendaVideojuegos\\src\\Vista\\img\\FrmVendedores.png")); // NOI18N
+        getContentPane().add(lbFondo);
+        lbFondo.setBounds(0, 0, 451, 430);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

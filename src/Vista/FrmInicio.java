@@ -31,6 +31,7 @@ public class FrmInicio extends javax.swing.JFrame {
         btnVentas = new javax.swing.JButton();
         btnProveedores = new javax.swing.JButton();
         btnVendedores = new javax.swing.JButton();
+        btnProductos = new javax.swing.JButton();
         lbFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -42,13 +43,18 @@ public class FrmInicio extends javax.swing.JFrame {
 
         btnClientes.setBorder(null);
         btnClientes.setContentAreaFilled(false);
+        btnClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClientesActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnClientes);
-        btnClientes.setBounds(40, 170, 150, 50);
+        btnClientes.setBounds(40, 130, 150, 50);
 
         btnVentas.setBorder(null);
         btnVentas.setContentAreaFilled(false);
         getContentPane().add(btnVentas);
-        btnVentas.setBounds(280, 170, 140, 50);
+        btnVentas.setBounds(280, 130, 140, 50);
 
         btnProveedores.setBorder(null);
         btnProveedores.setContentAreaFilled(false);
@@ -58,21 +64,45 @@ public class FrmInicio extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnProveedores);
-        btnProveedores.setBounds(40, 270, 150, 50);
+        btnProveedores.setBounds(40, 220, 150, 50);
 
         btnVendedores.setBorder(null);
         btnVendedores.setContentAreaFilled(false);
         getContentPane().add(btnVendedores);
-        btnVendedores.setBounds(280, 270, 140, 50);
+        btnVendedores.setBounds(280, 220, 140, 50);
+
+        btnProductos.setBorder(null);
+        btnProductos.setContentAreaFilled(false);
+        btnProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProductosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnProductos);
+        btnProductos.setBounds(160, 300, 140, 50);
+
+        lbFondo.setIcon(new javax.swing.ImageIcon("D:\\lenin\\Documents\\NetBeansProjects\\TiendaVideojuegos\\src\\Vista\\img\\OpcionesPreview.png")); // NOI18N
         getContentPane().add(lbFondo);
-        lbFondo.setBounds(0, 0, 0, 0);
+        lbFondo.setBounds(0, 0, 450, 420);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveedoresActionPerformed
         // TODO add your handling code here:
+        new FrmProveedores().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnProveedoresActionPerformed
+
+    private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
+        // TODO add your handling code here:
+        new FrmCliente().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnClientesActionPerformed
+
+    private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnProductosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -111,6 +141,7 @@ public class FrmInicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClientes;
+    private javax.swing.JButton btnProductos;
     private javax.swing.JButton btnProveedores;
     private javax.swing.JButton btnVendedores;
     private javax.swing.JButton btnVentas;
