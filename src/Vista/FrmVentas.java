@@ -67,6 +67,7 @@ public class FrmVentas extends javax.swing.JFrame {
 
         txtIdCliente.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
+        txtIdCliente.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txtIdCliente.setBorder(null);
         txtIdCliente.setOpaque(false);
         getContentPane().add(txtIdCliente);
@@ -74,6 +75,7 @@ public class FrmVentas extends javax.swing.JFrame {
 
         txtIdVendedor.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
+        txtIdVendedor.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txtIdVendedor.setBorder(null);
         txtIdVendedor.setOpaque(false);
         txtIdVendedor.addActionListener(new java.awt.event.ActionListener() {
@@ -86,6 +88,7 @@ public class FrmVentas extends javax.swing.JFrame {
 
         txtIdProducto.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
+        txtIdProducto.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txtIdProducto.setBorder(null);
         txtIdProducto.setOpaque(false);
         getContentPane().add(txtIdProducto);
@@ -93,6 +96,7 @@ public class FrmVentas extends javax.swing.JFrame {
 
         txtCantidad.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
+        txtCantidad.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txtCantidad.setBorder(null);
         txtCantidad.setOpaque(false);
         getContentPane().add(txtCantidad);
@@ -100,6 +104,7 @@ public class FrmVentas extends javax.swing.JFrame {
 
         txtDia.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
+        txtDia.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txtDia.setBorder(null);
         txtDia.setOpaque(false);
         getContentPane().add(txtDia);
