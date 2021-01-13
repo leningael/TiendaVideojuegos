@@ -9,12 +9,12 @@ package Vista;
  *
  * @author lenin
  */
-public class FrmVendedores extends javax.swing.JFrame {
+public class FrmProductos extends javax.swing.JFrame {
 
     /**
-     * Creates new form FrmVendedores
+     * Creates new form FrmProductos
      */
-    public FrmVendedores() {
+    public FrmProductos() {
         initComponents();
     }
 
@@ -27,13 +27,14 @@ public class FrmVendedores extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnSalir = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
-        txtIdVendedores = new javax.swing.JTextField();
+        btnSalir = new javax.swing.JButton();
+        txtIdProducto = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
-        txtTelefono = new javax.swing.JTextField();
-        txtHorasTrabajo = new javax.swing.JTextField();
-        txtHorario = new javax.swing.JTextField();
+        txtPrecioCompra = new javax.swing.JTextField();
+        txtStock = new javax.swing.JTextField();
+        txtPrecioVenta = new javax.swing.JTextField();
+        txtCantidad = new javax.swing.JTextField();
         lbFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -43,30 +44,33 @@ public class FrmVendedores extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(451, 425));
         getContentPane().setLayout(null);
 
+        btnGuardar.setBorder(null);
+        btnGuardar.setBorderPainted(false);
+        btnGuardar.setContentAreaFilled(false);
+        btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        getContentPane().add(btnGuardar);
+        btnGuardar.setBounds(40, 330, 80, 30);
+
         btnSalir.setBorder(null);
         btnSalir.setBorderPainted(false);
         btnSalir.setContentAreaFilled(false);
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalir.setOpaque(false);
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
             }
         });
         getContentPane().add(btnSalir);
-        btnSalir.setBounds(300, 340, 70, 40);
+        btnSalir.setBounds(300, 330, 70, 30);
 
-        btnGuardar.setBorder(null);
-        btnGuardar.setBorderPainted(false);
-        btnGuardar.setContentAreaFilled(false);
-        getContentPane().add(btnGuardar);
-        btnGuardar.setBounds(40, 340, 90, 40);
-
-        txtIdVendedores.setBackground(new java.awt.Color(255, 255, 255, 0)
+        txtIdProducto.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
-        txtIdVendedores.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txtIdVendedores.setBorder(null);
-        txtIdVendedores.setOpaque(false);
-        getContentPane().add(txtIdVendedores);
-        txtIdVendedores.setBounds(180, 82, 230, 30);
+        txtIdProducto.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtIdProducto.setBorder(null);
+        txtIdProducto.setOpaque(false);
+        getContentPane().add(txtIdProducto);
+        txtIdProducto.setBounds(160, 80, 220, 20);
 
         txtNombre.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
@@ -74,35 +78,44 @@ public class FrmVendedores extends javax.swing.JFrame {
         txtNombre.setBorder(null);
         txtNombre.setOpaque(false);
         getContentPane().add(txtNombre);
-        txtNombre.setBounds(180, 130, 230, 30);
+        txtNombre.setBounds(160, 130, 220, 20);
 
-        txtTelefono.setBackground(new java.awt.Color(255, 255, 255, 0)
+        txtPrecioCompra.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
-        txtTelefono.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txtTelefono.setBorder(null);
-        txtTelefono.setOpaque(false);
-        getContentPane().add(txtTelefono);
-        txtTelefono.setBounds(180, 190, 230, 20);
+        txtPrecioCompra.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtPrecioCompra.setBorder(null);
+        txtPrecioCompra.setOpaque(false);
+        getContentPane().add(txtPrecioCompra);
+        txtPrecioCompra.setBounds(190, 180, 80, 30);
 
-        txtHorasTrabajo.setBackground(new java.awt.Color(255, 255, 255, 0)
+        txtStock.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
-        txtHorasTrabajo.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txtHorasTrabajo.setBorder(null);
-        txtHorasTrabajo.setOpaque(false);
-        getContentPane().add(txtHorasTrabajo);
-        txtHorasTrabajo.setBounds(180, 240, 230, 20);
+        txtStock.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtStock.setBorder(null);
+        txtStock.setOpaque(false);
+        getContentPane().add(txtStock);
+        txtStock.setBounds(360, 180, 60, 30);
 
-        txtHorario.setBackground(new java.awt.Color(255, 255, 255, 0)
+        txtPrecioVenta.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
-        txtHorario.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txtHorario.setBorder(null);
-        txtHorario.setOpaque(false);
-        getContentPane().add(txtHorario);
-        txtHorario.setBounds(180, 300, 230, 20);
+        txtPrecioVenta.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtPrecioVenta.setBorder(null);
+        txtPrecioVenta.setOpaque(false);
+        getContentPane().add(txtPrecioVenta);
+        txtPrecioVenta.setBounds(230, 230, 120, 30);
 
-        lbFondo.setIcon(new javax.swing.ImageIcon("D:\\lenin\\Documents\\NetBeansProjects\\TiendaVideojuegos\\src\\Vista\\img\\FrmVendedores.png")); // NOI18N
+        txtCantidad.setBackground(new java.awt.Color(255, 255, 255, 0)
+        );
+        txtCantidad.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtCantidad.setBorder(null);
+        txtCantidad.setOpaque(false);
+        getContentPane().add(txtCantidad);
+        txtCantidad.setBounds(250, 280, 60, 30);
+
+        lbFondo.setIcon(new javax.swing.ImageIcon("D:\\lenin\\Documents\\NetBeansProjects\\TiendaVideojuegos\\src\\Vista\\img\\FrmProductos.png")); // NOI18N
+        lbFondo.setOpaque(true);
         getContentPane().add(lbFondo);
-        lbFondo.setBounds(0, 0, 451, 430);
+        lbFondo.setBounds(0, 0, 451, 425);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -130,20 +143,20 @@ public class FrmVendedores extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmVendedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmVendedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmVendedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmVendedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmVendedores().setVisible(true);
+                new FrmProductos().setVisible(true);
             }
         });
     }
@@ -152,10 +165,11 @@ public class FrmVendedores extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JLabel lbFondo;
-    private javax.swing.JTextField txtHorario;
-    private javax.swing.JTextField txtHorasTrabajo;
-    private javax.swing.JTextField txtIdVendedores;
+    private javax.swing.JTextField txtCantidad;
+    private javax.swing.JTextField txtIdProducto;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtTelefono;
+    private javax.swing.JTextField txtPrecioCompra;
+    private javax.swing.JTextField txtPrecioVenta;
+    private javax.swing.JTextField txtStock;
     // End of variables declaration//GEN-END:variables
 }

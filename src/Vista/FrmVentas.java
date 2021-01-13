@@ -51,19 +51,24 @@ public class FrmVentas extends javax.swing.JFrame {
         btnGuardar.setBorderPainted(false);
         btnGuardar.setContentAreaFilled(false);
         getContentPane().add(btnGuardar);
-        btnGuardar.setBounds(40, 330, 80, 40);
+        btnGuardar.setBounds(40, 320, 80, 30);
 
         btnTerminar.setBorder(null);
         btnTerminar.setBorderPainted(false);
         btnTerminar.setContentAreaFilled(false);
         getContentPane().add(btnTerminar);
-        btnTerminar.setBounds(160, 330, 100, 40);
+        btnTerminar.setBounds(160, 320, 100, 30);
 
         btnSalir.setBorder(null);
         btnSalir.setBorderPainted(false);
         btnSalir.setContentAreaFilled(false);
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnSalir);
-        btnSalir.setBounds(300, 330, 70, 40);
+        btnSalir.setBounds(300, 320, 70, 30);
 
         txtIdCliente.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
@@ -112,6 +117,7 @@ public class FrmVentas extends javax.swing.JFrame {
 
         txtMes.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
+        txtMes.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txtMes.setBorder(null);
         txtMes.setOpaque(false);
         getContentPane().add(txtMes);
@@ -119,6 +125,7 @@ public class FrmVentas extends javax.swing.JFrame {
 
         txtAnio.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
+        txtAnio.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txtAnio.setBorder(null);
         txtAnio.setOpaque(false);
         getContentPane().add(txtAnio);
@@ -126,6 +133,7 @@ public class FrmVentas extends javax.swing.JFrame {
 
         txtHora.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
+        txtHora.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txtHora.setBorder(null);
         txtHora.setOpaque(false);
         getContentPane().add(txtHora);
@@ -133,6 +141,7 @@ public class FrmVentas extends javax.swing.JFrame {
 
         txtMinuto.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
+        txtMinuto.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         txtMinuto.setBorder(null);
         txtMinuto.setOpaque(false);
         getContentPane().add(txtMinuto);
@@ -148,6 +157,12 @@ public class FrmVentas extends javax.swing.JFrame {
     private void txtIdVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdVendedorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdVendedorActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+        new FrmInicio().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments

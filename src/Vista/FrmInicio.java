@@ -53,6 +53,11 @@ public class FrmInicio extends javax.swing.JFrame {
 
         btnVentas.setBorder(null);
         btnVentas.setContentAreaFilled(false);
+        btnVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVentasActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnVentas);
         btnVentas.setBounds(280, 130, 140, 50);
 
@@ -68,6 +73,11 @@ public class FrmInicio extends javax.swing.JFrame {
 
         btnVendedores.setBorder(null);
         btnVendedores.setContentAreaFilled(false);
+        btnVendedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVendedoresActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnVendedores);
         btnVendedores.setBounds(280, 220, 140, 50);
 
@@ -102,7 +112,21 @@ public class FrmInicio extends javax.swing.JFrame {
 
     private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosActionPerformed
         // TODO add your handling code here:
+        new FrmProductos().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnProductosActionPerformed
+
+    private void btnVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentasActionPerformed
+        // TODO add your handling code here:
+        new FrmVentas().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnVentasActionPerformed
+
+    private void btnVendedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendedoresActionPerformed
+        // TODO add your handling code here:
+        new FrmVendedores().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnVendedoresActionPerformed
 
     /**
      * @param args the command line arguments
