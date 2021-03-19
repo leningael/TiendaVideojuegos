@@ -5,6 +5,21 @@
  */
 package Vista;
 
+import Aplicacion.TiendaVideojuegosInicio;
+import static Aplicacion.TiendaVideojuegosInicio.listaClientes;
+import static Aplicacion.TiendaVideojuegosInicio.listaProductos;
+import static Aplicacion.TiendaVideojuegosInicio.listaVendedores;
+import static Aplicacion.TiendaVideojuegosInicio.listaVentas;
+import Modelo.Excepepciones.CamposVacios;
+import Modelo.Excepepciones.ErrorTerminarVenta;
+import Modelo.Excepepciones.IDInexistente;
+import Modelo.Fecha;
+import Modelo.Hora;
+import Modelo.Excepepciones.NumeroInvalido;
+import Modelo.Excepepciones.SinStock;
+import Modelo.Ventas;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author lenin
@@ -17,7 +32,39 @@ public class FrmVentas extends javax.swing.JFrame {
     public FrmVentas() {
         initComponents();
     }
-
+    int contVentas = 0;
+    public static double totalVenta = 0.0;
+    public static int indexVenta = -1;
+    int cantidad;
+    boolean adquirir;
+    int indexProducto = -1;
+    int indexVendedor = -1;
+    int indexCliente = -1;
+    public void identificarProducto(String idProducto){
+        for(int i = 0; i<listaProductos.size();i++){
+            if(listaProductos.get(i).getIdProducto().equalsIgnoreCase(idProducto)){
+                indexProducto = i;
+            }
+        }   
+    }
+    public void identificarVendedor(String idPersona){
+        for(int i = 0; i<listaVendedores.size();i++){
+            if(listaVendedores.get(i).getClavePersona().equalsIgnoreCase(idPersona)){
+                indexVendedor = i;
+            }
+        }   
+    }
+    public void identificarCliente(String idPersona){
+        for(int i = 0; i<listaClientes.size();i++){
+            if(listaClientes.get(i).getClavePersona().equalsIgnoreCase(idPersona)){
+                indexCliente = i;
+            }
+        }   
+    }
+    public void limpiarTxt(){
+        this.txtIdProducto.setText("");
+        this.txtCantidad.setText("");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,55 +79,70 @@ public class FrmVentas extends javax.swing.JFrame {
         btnSalir = new javax.swing.JButton();
         txtIdCliente = new javax.swing.JTextField();
         txtIdVendedor = new javax.swing.JTextField();
-        txtIdProducto = new javax.swing.JTextField();
         txtCantidad = new javax.swing.JTextField();
         txtDia = new javax.swing.JTextField();
         txtMes = new javax.swing.JTextField();
         txtAnio = new javax.swing.JTextField();
         txtHora = new javax.swing.JTextField();
         txtMinuto = new javax.swing.JTextField();
+        txtIdProducto = new javax.swing.JTextField();
         lbFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(451, 425));
-        setPreferredSize(new java.awt.Dimension(451, 425));
+        setLocation(new java.awt.Point(500, 100));
+        setMinimumSize(new java.awt.Dimension(854, 720));
+        setPreferredSize(new java.awt.Dimension(854, 720));
         setResizable(false);
+        setSize(new java.awt.Dimension(854, 720));
         getContentPane().setLayout(null);
 
         btnGuardar.setBorder(null);
         btnGuardar.setBorderPainted(false);
         btnGuardar.setContentAreaFilled(false);
+        btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnGuardar);
-        btnGuardar.setBounds(40, 320, 80, 30);
+        btnGuardar.setBounds(100, 610, 150, 70);
 
         btnTerminar.setBorder(null);
         btnTerminar.setBorderPainted(false);
         btnTerminar.setContentAreaFilled(false);
+        btnTerminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTerminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTerminarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnTerminar);
-        btnTerminar.setBounds(160, 320, 100, 30);
+        btnTerminar.setBounds(320, 610, 180, 60);
 
         btnSalir.setBorder(null);
         btnSalir.setBorderPainted(false);
         btnSalir.setContentAreaFilled(false);
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
             }
         });
         getContentPane().add(btnSalir);
-        btnSalir.setBounds(300, 320, 70, 30);
+        btnSalir.setBounds(570, 610, 130, 60);
 
         txtIdCliente.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
-        txtIdCliente.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtIdCliente.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         txtIdCliente.setBorder(null);
         txtIdCliente.setOpaque(false);
         getContentPane().add(txtIdCliente);
-        txtIdCliente.setBounds(160, 80, 230, 30);
+        txtIdCliente.setBounds(330, 120, 460, 50);
 
         txtIdVendedor.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
-        txtIdVendedor.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtIdVendedor.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         txtIdVendedor.setBorder(null);
         txtIdVendedor.setOpaque(false);
         txtIdVendedor.addActionListener(new java.awt.event.ActionListener() {
@@ -89,67 +151,72 @@ public class FrmVentas extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtIdVendedor);
-        txtIdVendedor.setBounds(160, 120, 230, 30);
-
-        txtIdProducto.setBackground(new java.awt.Color(255, 255, 255, 0)
-        );
-        txtIdProducto.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txtIdProducto.setBorder(null);
-        txtIdProducto.setOpaque(false);
-        getContentPane().add(txtIdProducto);
-        txtIdProducto.setBounds(160, 160, 230, 20);
+        txtIdVendedor.setBounds(330, 200, 460, 50);
 
         txtCantidad.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
-        txtCantidad.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtCantidad.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         txtCantidad.setBorder(null);
         txtCantidad.setOpaque(false);
         getContentPane().add(txtCantidad);
-        txtCantidad.setBounds(160, 190, 120, 30);
+        txtCantidad.setBounds(330, 350, 240, 40);
 
         txtDia.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
-        txtDia.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtDia.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         txtDia.setBorder(null);
         txtDia.setOpaque(false);
         getContentPane().add(txtDia);
-        txtDia.setBounds(160, 230, 50, 20);
+        txtDia.setBounds(330, 420, 100, 40);
 
         txtMes.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
-        txtMes.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtMes.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         txtMes.setBorder(null);
         txtMes.setOpaque(false);
         getContentPane().add(txtMes);
-        txtMes.setBounds(230, 230, 50, 20);
+        txtMes.setBounds(470, 420, 100, 40);
 
         txtAnio.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
-        txtAnio.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtAnio.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         txtAnio.setBorder(null);
         txtAnio.setOpaque(false);
         getContentPane().add(txtAnio);
-        txtAnio.setBounds(300, 230, 50, 20);
+        txtAnio.setBounds(610, 420, 100, 40);
 
         txtHora.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
-        txtHora.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtHora.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         txtHora.setBorder(null);
         txtHora.setOpaque(false);
         getContentPane().add(txtHora);
-        txtHora.setBounds(160, 270, 50, 30);
+        txtHora.setBounds(330, 510, 100, 40);
 
         txtMinuto.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
-        txtMinuto.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtMinuto.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         txtMinuto.setBorder(null);
         txtMinuto.setOpaque(false);
         getContentPane().add(txtMinuto);
-        txtMinuto.setBounds(230, 270, 50, 30);
+        txtMinuto.setBounds(470, 510, 100, 40);
 
-        lbFondo.setIcon(new javax.swing.ImageIcon("D:\\lenin\\Documents\\NetBeansProjects\\TiendaVideojuegos\\src\\Vista\\img\\FondoVentas.png")); // NOI18N
+        txtIdProducto.setBackground(new java.awt.Color(255, 255, 255, 0)
+        );
+        txtIdProducto.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        txtIdProducto.setBorder(null);
+        txtIdProducto.setOpaque(false);
+        txtIdProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdProductoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtIdProducto);
+        txtIdProducto.setBounds(330, 270, 460, 50);
+
+        lbFondo.setIcon(new javax.swing.ImageIcon("D:\\lenin\\Documents\\NetBeansProjects\\TiendaVideojuegos\\src\\Vista\\img\\FrmVentas.png")); // NOI18N
         getContentPane().add(lbFondo);
-        lbFondo.setBounds(0, 0, 450, 430);
+        lbFondo.setBounds(0, 0, 854, 720);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -163,6 +230,89 @@ public class FrmVentas extends javax.swing.JFrame {
         new FrmInicio().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        try{
+            String idCliente = this.txtIdCliente.getText();
+            String matricula = this.txtIdVendedor.getText();
+            String idProducto = this.txtIdProducto.getText();
+            cantidad = Integer.parseInt(this.txtCantidad.getText());
+            int dia = Integer.parseInt(this.txtDia.getText());
+            int mes = Integer.parseInt(this.txtMes.getText());
+            int anio = Integer.parseInt(this.txtAnio.getText());
+            Fecha fecha = new Fecha(dia, mes, anio);
+            int hora = Integer.parseInt(this.txtHora.getText());
+            int minuto = Integer.parseInt(this.txtMinuto.getText());
+            Hora horaVenta = new Hora(hora, minuto);
+            if(this.txtIdCliente.getText().isEmpty()||this.txtIdVendedor.getText().isEmpty()||this.txtIdProducto.getText().isEmpty()||this.txtCantidad.getText().isEmpty()||
+                    this.txtDia.getText().isEmpty()||this.txtMes.getText().isEmpty()||this.txtAnio.getText().isEmpty()||this.txtHora.getText().isEmpty()||this.txtMinuto.getText().isEmpty())
+                throw new CamposVacios("Rellene todos los campos");
+            if(cantidad<0||dia<0||dia>31||mes<0||mes>12||anio!=2021||hora<0||hora>23||minuto<0||minuto>59)
+                throw new NumeroInvalido("Número no aceptado. Verifique los datos ingresados");
+            identificarCliente(idCliente);
+            identificarVendedor(matricula);
+            identificarProducto(idProducto);
+            if(indexCliente == -1 || indexVendedor == -1 || indexProducto == -1)
+                throw new IDInexistente("El ID ingresado no existe");
+            if(cantidad>TiendaVideojuegosInicio.listaProductos.get(indexProducto).getStock())
+                throw new SinStock("No hay suficiente stock para completar la venta");
+            TiendaVideojuegosInicio.listaProductos.get(indexProducto).actualizarStock(cantidad, adquirir);
+            listaVentas.add(listaProductos.get(indexProducto).getNombre());
+            listaVentas.add(""+cantidad);
+            listaVentas.add(""+listaProductos.get(indexProducto).getPrecio());
+            listaVentas.add(""+listaProductos.get(indexProducto).getPrecio()*cantidad);
+            TiendaVideojuegosInicio.datosVentas.add(new Ventas(idCliente, matricula, idProducto, fecha, horaVenta));
+            totalVenta = totalVenta + listaProductos.get(indexProducto).getPrecio()*cantidad;
+            JOptionPane.showMessageDialog(rootPane, "El producto se ha agregado correctamente");
+            contVentas++;
+            indexProducto = -1;
+            indexVendedor = -1;
+            this.txtIdCliente.setEnabled(false);
+            this.txtIdVendedor.setEnabled(false);
+            this.txtDia.setEnabled(false);
+            this.txtMes.setEnabled(false);
+            this.txtAnio.setEnabled(false);
+            this.txtHora.setEnabled(false);
+            this.txtMinuto.setEnabled(false);
+            limpiarTxt();
+        }catch(CamposVacios e1){
+            JOptionPane.showMessageDialog(rootPane, e1.getMessage());
+        }catch(NumberFormatException e2){
+            JOptionPane.showMessageDialog(rootPane, "Debe ingresar un número");
+        }catch(NumeroInvalido e3){
+            JOptionPane.showMessageDialog(rootPane, e3.getMessage());
+        }catch(IDInexistente e4){
+            JOptionPane.showMessageDialog(rootPane, e4.getMessage());
+        }catch(SinStock e5){
+            JOptionPane.showMessageDialog(rootPane, e5.getMessage());
+        }
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void txtIdProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdProductoActionPerformed
+
+    private void btnTerminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTerminarActionPerformed
+        // TODO add your handling code here:
+        try{
+            if(contVentas==0)
+                throw new ErrorTerminarVenta("No puede terminar la compra sin agregar productos");
+            this.txtIdCliente.setEnabled(true);
+            this.txtIdVendedor.setEnabled(true);
+            this.txtDia.setEnabled(true);
+            this.txtMes.setEnabled(true);
+            this.txtAnio.setEnabled(true);
+            this.txtHora.setEnabled(true);
+            this.txtMinuto.setEnabled(true);
+            indexVenta++;
+            JOptionPane.showMessageDialog(rootPane, "El total a pagar es: " + totalVenta);
+            new FrmTicket().setVisible(true);
+            listaVentas.clear();
+        }catch(ErrorTerminarVenta e1){
+            JOptionPane.showMessageDialog(rootPane, e1.getMessage());
+        }
+    }//GEN-LAST:event_btnTerminarActionPerformed
 
     /**
      * @param args the command line arguments

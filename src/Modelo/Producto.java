@@ -11,17 +11,18 @@ package Modelo;
  */
 public class Producto {
     private String idProducto;
+    private String idProveedor;
     private String nombre;
     private double precio;
-    private int stock;
+    private int stock = 0;
     private int cantComprar;
     private double precioPorArticulo;
 
-    public Producto(String idProducto, String nombre, double precio, int stock, int cantComprar, double precioPorArticulo) {
+    public Producto(String idProducto, String idProveedor, String nombre, double precio, int cantComprar, double precioPorArticulo) {
         this.idProducto = idProducto;
+        this.idProveedor = idProveedor;
         this.nombre = nombre;
         this.precio = precio;
-        this.stock = stock;
         this.cantComprar = cantComprar;
         this.precioPorArticulo = precioPorArticulo;
     }
@@ -70,10 +71,24 @@ public class Producto {
         return precioPorArticulo;
     }
 
+    public String getIdProveedor() {
+        return idProveedor;
+    }
+
+    public void setIdProveedor(String idProveedor) {
+        this.idProveedor = idProveedor;
+    }
+    
+
     public void setPrecioPorArticulo(double precioPorArticulo) {
         this.precioPorArticulo = precioPorArticulo;
     }
-
+    public void actualizarStock(int cantComprar, boolean adquirir){
+        if(adquirir == true)
+            setStock(getStock()+cantComprar);
+        if(adquirir == false)
+            setStock(getStock()-cantComprar);
+    }
     @Override
     public String toString() {
         return "idProducto: " + getIdProducto() + ", nombre: " + getNombre() + ", precio: " + getPrecio() + ", stock: " + getStock() + ", cantComprar: " + getCantComprar() + ", precioPorArticulo: " + getPrecioPorArticulo();

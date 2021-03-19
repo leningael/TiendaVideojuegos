@@ -12,22 +12,12 @@ import java.util.ArrayList;
  * @author lenin
  */
 public class Horario {
-    private ArrayList<String> dias;
     private Hora horaInicio;
     private Hora horaSalida;
 
-    public Horario(ArrayList<String> dias, Hora horaInicio, Hora horaSalida) {
-        this.dias = dias;
+    public Horario(Hora horaInicio, Hora horaSalida) {
         this.horaInicio = horaInicio;
         this.horaSalida = horaSalida;
-    }
-
-    public ArrayList<String> getDias() {
-        return dias;
-    }
-
-    public void setDias(ArrayList<String> dias) {
-        this.dias = dias;
     }
 
     public Hora getHoraInicio() {
@@ -48,7 +38,7 @@ public class Horario {
 
     @Override
     public String toString() {
-        return "Dias: " + getDias() + ", horaInicio: " + getHoraInicio() + ", horaSalida: " + getHoraSalida();
+        return getHoraInicio() + "-" + getHoraSalida();
     }
     
 }

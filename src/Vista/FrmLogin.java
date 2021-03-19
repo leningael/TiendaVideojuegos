@@ -5,6 +5,8 @@
  */
 package Vista;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author lenin
@@ -27,55 +29,61 @@ public class FrmLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtIdVendedor = new javax.swing.JTextField();
+        txtClave = new javax.swing.JTextField();
         btnIr = new javax.swing.JButton();
         lbFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(451, 425));
+        setLocation(new java.awt.Point(500, 100));
+        setMinimumSize(new java.awt.Dimension(854, 720));
         setResizable(false);
-        setSize(new java.awt.Dimension(451, 425));
+        setSize(new java.awt.Dimension(854, 720));
         setType(java.awt.Window.Type.UTILITY);
         getContentPane().setLayout(null);
 
-        txtIdVendedor.setBackground(new java.awt.Color(255, 255, 255, 0)
+        txtClave.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
-        txtIdVendedor.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        txtIdVendedor.setBorder(null);
-        txtIdVendedor.setOpaque(false);
-        txtIdVendedor.addActionListener(new java.awt.event.ActionListener() {
+        txtClave.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        txtClave.setBorder(null);
+        txtClave.setOpaque(false);
+        txtClave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIdVendedorActionPerformed(evt);
+                txtClaveActionPerformed(evt);
             }
         });
-        getContentPane().add(txtIdVendedor);
-        txtIdVendedor.setBounds(210, 210, 220, 30);
+        getContentPane().add(txtClave);
+        txtClave.setBounds(290, 280, 400, 60);
 
         btnIr.setBorderPainted(false);
         btnIr.setContentAreaFilled(false);
+        btnIr.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnIr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIrActionPerformed(evt);
             }
         });
         getContentPane().add(btnIr);
-        btnIr.setBounds(150, 320, 150, 40);
+        btnIr.setBounds(340, 490, 200, 80);
 
         lbFondo.setIcon(new javax.swing.ImageIcon("D:\\lenin\\Documents\\NetBeansProjects\\TiendaVideojuegos\\src\\Vista\\img\\Login.png")); // NOI18N
         getContentPane().add(lbFondo);
-        lbFondo.setBounds(0, 0, 450, 430);
+        lbFondo.setBounds(0, 0, 850, 720);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtIdVendedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdVendedorActionPerformed
+    private void txtClaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClaveActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtIdVendedorActionPerformed
+    }//GEN-LAST:event_txtClaveActionPerformed
 
     private void btnIrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIrActionPerformed
         // TODO add your handling code here:
-        new FrmInicio().setVisible(true);
-        this.dispose();
+        if(this.txtClave.getText().equalsIgnoreCase("1234")){
+            new FrmInicio().setVisible(true);
+            this.dispose();
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "La clave ingresada es incorrecta");
+        }
     }//GEN-LAST:event_btnIrActionPerformed
 
     /**
@@ -116,6 +124,6 @@ public class FrmLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIr;
     private javax.swing.JLabel lbFondo;
-    private javax.swing.JTextField txtIdVendedor;
+    private javax.swing.JTextField txtClave;
     // End of variables declaration//GEN-END:variables
 }

@@ -36,7 +36,7 @@ public class Hora {
 
     @Override
     public String toString() {
-        return "hora: " + getHora() + ", minutos: " + getMinutos();
+        return String.format("%02d", getHora()) + ":" + String.format("%02d", getMinutos());
     }
     
 }

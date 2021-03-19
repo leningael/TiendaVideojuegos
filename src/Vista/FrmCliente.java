@@ -5,6 +5,12 @@
  */
 package Vista;
 
+import Aplicacion.TiendaVideojuegosInicio;
+import Modelo.Excepepciones.CamposVacios;
+import Modelo.Clientes;
+import Modelo.Excepepciones.NumeroInvalido;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author lenin
@@ -17,7 +23,12 @@ public class FrmCliente extends javax.swing.JFrame {
     public FrmCliente() {
         initComponents();
     }
-
+    public void limpiarTxt(){
+        this.txtIdCliente.setText("");
+        this.txtNombre.setText("");
+        this.txtTelefono.setText("");
+        this.txtPuntos.setText("");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,30 +47,38 @@ public class FrmCliente extends javax.swing.JFrame {
         lbFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(451, 425));
-        setPreferredSize(new java.awt.Dimension(451, 425));
+        setLocation(new java.awt.Point(500, 100));
+        setMinimumSize(new java.awt.Dimension(854, 720));
+        setPreferredSize(new java.awt.Dimension(854, 720));
         setResizable(false);
-        setSize(new java.awt.Dimension(451, 425));
+        setSize(new java.awt.Dimension(854, 720));
         getContentPane().setLayout(null);
 
         btnGuardar.setBorderPainted(false);
         btnGuardar.setContentAreaFilled(false);
+        btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnGuardar);
-        btnGuardar.setBounds(50, 320, 90, 40);
+        btnGuardar.setBounds(120, 550, 160, 70);
 
         btnSalir.setBorderPainted(false);
         btnSalir.setContentAreaFilled(false);
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
             }
         });
         getContentPane().add(btnSalir);
-        btnSalir.setBounds(300, 320, 80, 40);
+        btnSalir.setBounds(620, 550, 140, 70);
 
         txtIdCliente.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
-        txtIdCliente.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtIdCliente.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         txtIdCliente.setBorder(null);
         txtIdCliente.setOpaque(false);
         txtIdCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -68,35 +87,35 @@ public class FrmCliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtIdCliente);
-        txtIdCliente.setBounds(150, 102, 240, 30);
+        txtIdCliente.setBounds(320, 160, 450, 40);
 
         txtNombre.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
-        txtNombre.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtNombre.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         txtNombre.setBorder(null);
         txtNombre.setOpaque(false);
         getContentPane().add(txtNombre);
-        txtNombre.setBounds(150, 160, 230, 20);
+        txtNombre.setBounds(320, 260, 450, 40);
 
         txtTelefono.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
-        txtTelefono.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtTelefono.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         txtTelefono.setBorder(null);
         txtTelefono.setOpaque(false);
         getContentPane().add(txtTelefono);
-        txtTelefono.setBounds(150, 210, 230, 20);
+        txtTelefono.setBounds(320, 350, 450, 50);
 
         txtPuntos.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
-        txtPuntos.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtPuntos.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         txtPuntos.setBorder(null);
         txtPuntos.setOpaque(false);
         getContentPane().add(txtPuntos);
-        txtPuntos.setBounds(150, 260, 230, 20);
+        txtPuntos.setBounds(320, 440, 450, 50);
 
-        lbFondo.setIcon(new javax.swing.ImageIcon("D:\\lenin\\Documents\\NetBeansProjects\\TiendaVideojuegos\\src\\Vista\\img\\FondoClientes.png")); // NOI18N
+        lbFondo.setIcon(new javax.swing.ImageIcon("D:\\lenin\\Documents\\NetBeansProjects\\TiendaVideojuegos\\src\\Vista\\img\\FrmClientes.png")); // NOI18N
         getContentPane().add(lbFondo);
-        lbFondo.setBounds(0, 0, 450, 425);
+        lbFondo.setBounds(0, 0, 850, 720);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -110,6 +129,32 @@ public class FrmCliente extends javax.swing.JFrame {
         new FrmInicio().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        try{
+            String clavePersona = this.txtIdCliente.getText();
+            String nombre = this.txtNombre.getText();
+            String telefono = this.txtTelefono.getText();
+            int puntos = Integer.parseInt(this.txtPuntos.getText());
+            if(puntos < 0)
+                throw new NumeroInvalido("No se pueden registar puntos negativos");
+            if(this.txtIdCliente.getText().isEmpty()||this.txtNombre.getText().isEmpty()||this.txtTelefono.getText().isEmpty()||this.txtPuntos.getText().isEmpty())
+                throw new CamposVacios("Rellene todos los campos");
+            TiendaVideojuegosInicio.listaClientes.add(new Clientes(clavePersona, nombre, telefono, puntos));
+            JOptionPane.showMessageDialog(rootPane, "El cliente ha sido registrado");
+            limpiarTxt();
+        }
+        catch(CamposVacios e1){
+            JOptionPane.showMessageDialog(rootPane, e1.getMessage());
+        }
+        catch(NumberFormatException e2){
+            JOptionPane.showMessageDialog(rootPane, "Debe ingresar un número");
+        }
+        catch(NumeroInvalido e3){
+            JOptionPane.showMessageDialog(rootPane, e3.getMessage());
+        }
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
      * @param args the command line arguments

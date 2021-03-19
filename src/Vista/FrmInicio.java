@@ -35,65 +35,71 @@ public class FrmInicio extends javax.swing.JFrame {
         lbFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(451, 425));
-        setPreferredSize(new java.awt.Dimension(451, 425));
+        setLocation(new java.awt.Point(500, 100));
+        setMinimumSize(new java.awt.Dimension(854, 720));
+        setPreferredSize(new java.awt.Dimension(854, 720));
         setResizable(false);
-        setSize(new java.awt.Dimension(451, 425));
+        setSize(new java.awt.Dimension(854, 720));
         getContentPane().setLayout(null);
 
         btnClientes.setBorder(null);
         btnClientes.setContentAreaFilled(false);
+        btnClientes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClientesActionPerformed(evt);
             }
         });
         getContentPane().add(btnClientes);
-        btnClientes.setBounds(40, 130, 150, 50);
+        btnClientes.setBounds(170, 250, 200, 90);
 
         btnVentas.setBorder(null);
         btnVentas.setContentAreaFilled(false);
+        btnVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVentas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVentasActionPerformed(evt);
             }
         });
         getContentPane().add(btnVentas);
-        btnVentas.setBounds(280, 130, 140, 50);
+        btnVentas.setBounds(490, 250, 200, 90);
 
         btnProveedores.setBorder(null);
         btnProveedores.setContentAreaFilled(false);
+        btnProveedores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnProveedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProveedoresActionPerformed(evt);
             }
         });
         getContentPane().add(btnProveedores);
-        btnProveedores.setBounds(40, 220, 150, 50);
+        btnProveedores.setBounds(160, 400, 210, 90);
 
         btnVendedores.setBorder(null);
         btnVendedores.setContentAreaFilled(false);
+        btnVendedores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnVendedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVendedoresActionPerformed(evt);
             }
         });
         getContentPane().add(btnVendedores);
-        btnVendedores.setBounds(280, 220, 140, 50);
+        btnVendedores.setBounds(490, 400, 200, 90);
 
         btnProductos.setBorder(null);
         btnProductos.setContentAreaFilled(false);
+        btnProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProductosActionPerformed(evt);
             }
         });
         getContentPane().add(btnProductos);
-        btnProductos.setBounds(160, 300, 140, 50);
+        btnProductos.setBounds(330, 550, 200, 80);
 
         lbFondo.setIcon(new javax.swing.ImageIcon("D:\\lenin\\Documents\\NetBeansProjects\\TiendaVideojuegos\\src\\Vista\\img\\OpcionesPreview.png")); // NOI18N
         getContentPane().add(lbFondo);
-        lbFondo.setBounds(0, 0, 450, 420);
+        lbFondo.setBounds(0, 0, 850, 720);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

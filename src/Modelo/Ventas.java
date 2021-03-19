@@ -5,35 +5,28 @@
  */
 package Modelo;
 
+import static Aplicacion.TiendaVideojuegosInicio.listaProductos;
+
 import java.util.ArrayList;
 
 /**
  *
  * @author lenin
  */
-public class Ventas implements PorPagar{
-    private String folio;
+public class Ventas{
+    public static double total = 0.0;
     private String idCliente;
     private String matricula;
-    private ArrayList<Producto> productos;
+    private String idProducto;
     private Fecha fecha;
     private Hora hora;
 
-    public Ventas(String folio, String idCliente, String matricula, ArrayList<Producto> productos, Fecha fecha, Hora hora) {
-        this.folio = folio;
+    public Ventas(String idCliente, String matricula, String idProducto, Fecha fecha, Hora hora) {
         this.idCliente = idCliente;
         this.matricula = matricula;
-        this.productos = productos;
+        this.idProducto = idProducto;
         this.fecha = fecha;
         this.hora = hora;
-    }
-
-    public String getFolio() {
-        return folio;
-    }
-
-    public void setFolio(String folio) {
-        this.folio = folio;
     }
 
     public String getIdCliente() {
@@ -52,12 +45,12 @@ public class Ventas implements PorPagar{
         this.matricula = matricula;
     }
 
-    public ArrayList<Producto> getProductos() {
-        return productos;
+    public String getIdProducto() {
+        return idProducto;
     }
 
-    public void setProductos(ArrayList<Producto> productos) {
-        this.productos = productos;
+    public void setIdProducto(String idProducto) {
+        this.idProducto = idProducto;
     }
 
     public Fecha getFecha() {
@@ -76,18 +69,10 @@ public class Ventas implements PorPagar{
         this.hora = hora;
     }
     
-    @Override
-    public double obtenerMontoPago() {
-        double total = 0.0;
-        for(int i = 0; i < productos.size(); i++){
-            total = total + productos.get(i).getPrecio()*productos.get(i).getCantComprar();
-        }
-        return total;
-    }
     
     @Override
     public String toString() {
-        return "Folio: " + getFolio() + ", idCliente: " + getIdCliente() + ", matricula: " + getMatricula() + ", productos: " + getProductos() + ", fecha: " + getFecha() + ", hora: " + getHora();
+        return "Id cliente: " + getIdCliente() + ", matricula: " + getMatricula() + ", id producto: " + getIdProducto() + ", fecha: " + getFecha() + ", hora: " + getHora();
     }
     
 }

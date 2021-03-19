@@ -11,8 +11,9 @@ package Modelo;
  */
 public class Proveedores extends Persona{
     private String email;
+    private double total = 0.0;
 
-    public Proveedores(String email, String clavePersona, String nombre, String numeroTelefono) {
+    public Proveedores(String clavePersona, String nombre, String numeroTelefono, String email) {
         super(clavePersona, nombre, numeroTelefono);
         this.email = email;
     }
@@ -25,6 +26,14 @@ public class Proveedores extends Persona{
         this.email = email;
     }
 
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+    
     @Override
     public String toString() {
         return super.toString() + ", email=" + getEmail();

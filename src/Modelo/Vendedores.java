@@ -10,20 +10,20 @@ package Modelo;
  * @author lenin
  */
 public class Vendedores extends Persona implements PorPagar{
-    private int horasTrabajo;
+    private double horasTrabajo;
     private Horario horario;
 
-    public Vendedores(int horasTrabajo, Horario horario, String clavePersona, String nombre, String numeroTelefono) {
+    public Vendedores(String clavePersona, String nombre, String numeroTelefono, double horasTrabajo, Horario horario) {
         super(clavePersona, nombre, numeroTelefono);
         this.horasTrabajo = horasTrabajo;
         this.horario = horario;
     }
 
-    public int getHorasTrabajo() {
+    public double getHorasTrabajo() {
         return horasTrabajo;
     }
 
-    public void setHorasTrabajo(int horasTrabajo) {
+    public void setHorasTrabajo(double horasTrabajo) {
         this.horasTrabajo = horasTrabajo;
     }
 
@@ -34,10 +34,11 @@ public class Vendedores extends Persona implements PorPagar{
     public void setHorario(Horario horario) {
         this.horario = horario;
     }
+    
 
     @Override
     public double obtenerMontoPago() {
-        return getHorasTrabajo()*80;
+        return getHorasTrabajo()*80*14;
     }
     
     @Override

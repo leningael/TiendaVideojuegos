@@ -5,6 +5,11 @@
  */
 package Vista;
 
+import static Aplicacion.TiendaVideojuegosInicio.listaProveedores;
+import Modelo.Excepepciones.CamposVacios;
+import Modelo.Proveedores;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author lenin
@@ -17,7 +22,12 @@ public class FrmProveedores extends javax.swing.JFrame {
     public FrmProveedores() {
         initComponents();
     }
-
+    public void limpiarTxt(){
+        this.txtIdProveedores.setText("");
+        this.txtNombre.setText("");
+        this.txtTelefono.setText("");
+        this.txtCorreo.setText("");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,6 +45,9 @@ public class FrmProveedores extends javax.swing.JFrame {
         txtTelefono = new javax.swing.JTextField();
         txtCorreo = new javax.swing.JTextField();
         lbFondo = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        menuBar = new javax.swing.JMenu();
+        menuItemFactura = new javax.swing.JMenuItem();
 
         txt3.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
@@ -48,29 +61,37 @@ public class FrmProveedores extends javax.swing.JFrame {
         });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(451, 425));
-        setPreferredSize(new java.awt.Dimension(451, 425));
-        setSize(new java.awt.Dimension(451, 425));
+        setLocation(new java.awt.Point(500, 100));
+        setMinimumSize(new java.awt.Dimension(854, 720));
+        setPreferredSize(new java.awt.Dimension(854, 720));
+        setSize(new java.awt.Dimension(854, 720));
         getContentPane().setLayout(null);
 
         btnGuardar.setBorderPainted(false);
         btnGuardar.setContentAreaFilled(false);
+        btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnGuardar);
-        btnGuardar.setBounds(50, 330, 90, 40);
+        btnGuardar.setBounds(120, 580, 140, 70);
 
         btnSalir.setBorderPainted(false);
         btnSalir.setContentAreaFilled(false);
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
             }
         });
         getContentPane().add(btnSalir);
-        btnSalir.setBounds(310, 330, 70, 40);
+        btnSalir.setBounds(570, 580, 130, 70);
 
         txtIdProveedores.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
-        txtIdProveedores.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtIdProveedores.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         txtIdProveedores.setBorder(null);
         txtIdProveedores.setOpaque(false);
         txtIdProveedores.addActionListener(new java.awt.event.ActionListener() {
@@ -79,11 +100,11 @@ public class FrmProveedores extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtIdProveedores);
-        txtIdProveedores.setBounds(190, 80, 230, 30);
+        txtIdProveedores.setBounds(360, 130, 410, 40);
 
         txtNombre.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
-        txtNombre.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtNombre.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         txtNombre.setBorder(null);
         txtNombre.setOpaque(false);
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -92,11 +113,11 @@ public class FrmProveedores extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtNombre);
-        txtNombre.setBounds(190, 140, 230, 20);
+        txtNombre.setBounds(360, 230, 410, 40);
 
         txtTelefono.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
-        txtTelefono.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtTelefono.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         txtTelefono.setBorder(null);
         txtTelefono.setOpaque(false);
         txtTelefono.addActionListener(new java.awt.event.ActionListener() {
@@ -105,11 +126,11 @@ public class FrmProveedores extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtTelefono);
-        txtTelefono.setBounds(190, 200, 230, 20);
+        txtTelefono.setBounds(360, 330, 410, 40);
 
         txtCorreo.setBackground(new java.awt.Color(255, 255, 255, 0)
         );
-        txtCorreo.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        txtCorreo.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         txtCorreo.setBorder(null);
         txtCorreo.setOpaque(false);
         txtCorreo.addActionListener(new java.awt.event.ActionListener() {
@@ -118,11 +139,25 @@ public class FrmProveedores extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtCorreo);
-        txtCorreo.setBounds(190, 270, 230, 20);
+        txtCorreo.setBounds(360, 460, 410, 40);
 
-        lbFondo.setIcon(new javax.swing.ImageIcon("D:\\lenin\\Documents\\NetBeansProjects\\TiendaVideojuegos\\src\\Vista\\img\\FondoProveedores.png")); // NOI18N
+        lbFondo.setIcon(new javax.swing.ImageIcon("D:\\lenin\\Documents\\NetBeansProjects\\TiendaVideojuegos\\src\\Vista\\img\\FrmProveedores.png")); // NOI18N
         getContentPane().add(lbFondo);
-        lbFondo.setBounds(0, 0, 450, 430);
+        lbFondo.setBounds(0, 0, 854, 720);
+
+        menuBar.setText("Consulta");
+
+        menuItemFactura.setText("Factura");
+        menuItemFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemFacturaActionPerformed(evt);
+            }
+        });
+        menuBar.add(menuItemFactura);
+
+        jMenuBar1.add(menuBar);
+
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -152,6 +187,29 @@ public class FrmProveedores extends javax.swing.JFrame {
         new FrmInicio().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        try{
+            String clavePersona = this.txtIdProveedores.getText();
+            String nombre = this.txtNombre.getText();
+            String numeroTelefono = this.txtTelefono.getText();
+            String email = this.txtCorreo.getText();
+            if(this.txtIdProveedores.getText().isEmpty()||this.txtNombre.getText().isEmpty()||this.txtTelefono.getText().isEmpty()||this.txtCorreo.getText().isEmpty())
+                throw new CamposVacios("Rellene todos los campos");
+            listaProveedores.add(new Proveedores(clavePersona, nombre, numeroTelefono, email));
+            JOptionPane.showMessageDialog(rootPane, "El proveedor ha sido registrado");
+            limpiarTxt();
+        }catch(CamposVacios e1){
+            JOptionPane.showMessageDialog(rootPane, e1.getMessage());
+        }
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void menuItemFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemFacturaActionPerformed
+        // TODO add your handling code here:
+        new FrmFactura().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_menuItemFacturaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,7 +249,10 @@ public class FrmProveedores extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnSalir;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel lbFondo;
+    private javax.swing.JMenu menuBar;
+    private javax.swing.JMenuItem menuItemFactura;
     private javax.swing.JTextField txt3;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtIdProveedores;

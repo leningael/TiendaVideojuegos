@@ -12,7 +12,7 @@ package Modelo;
 public class Clientes extends Persona{
     private int puntos;
 
-    public Clientes(int puntos, String clavePersona, String nombre, String numeroTelefono) {
+    public Clientes(String clavePersona, String nombre, String numeroTelefono, int puntos) {
         super(clavePersona, nombre, numeroTelefono);
         this.puntos = puntos;
     }
